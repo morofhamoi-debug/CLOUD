@@ -1,4 +1,4 @@
-import { AbsoluteFill, useCurrentFrame, useVideoConfig } from "remotion";
+import { AbsoluteFill, useCurrentFrame } from "remotion";
 
 const blocks = [
   "Павел открыл конверт и замер.",
@@ -50,31 +50,9 @@ export const MyComposition = () => {
           fontWeight: 700,
           textAlign: "center",
           lineHeight: 1.3,
-          zIndex: 10,
         }}
       >
         {currentText}
-      </div>
-
-      <div
-        style={{
-          position: "absolute",
-          bottom: "100px",
-          left: "100px",
-          right: "100px",
-          height: "6px",
-          backgroundColor: "rgba(255,255,255,0.1)",
-          borderRadius: "3px",
-          overflow: "hidden",
-        }}
-      >
-        <div
-          style={{
-            width: `${(frame / (blocks.length * framesPerBlock)) * 100}%`,
-            height: "100%",
-            backgroundColor: "#a855f7",
-          }}
-        />
       </div>
     </AbsoluteFill>
   );
