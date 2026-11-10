@@ -1,4 +1,4 @@
-import { AbsoluteFill, useCurrentFrame, useVideoConfig, spring } from "remotion";
+import { AbsoluteFill, useCurrentFrame, useVideoConfig } from "remotion";
 
 const blocks = [
   "Павел открыл конверт и замер.",
@@ -24,9 +24,6 @@ const blocks = [
 
 export const MyComposition = () => {
   const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
-
-  // Распределение блоков по времени (примерно по 1.5 секунды на блок)
   const framesPerBlock = 45;
   const currentIndex = Math.min(
     Math.floor(frame / framesPerBlock),
@@ -39,41 +36,26 @@ export const MyComposition = () => {
   return (
     <AbsoluteFill
       style={{
-        backgroundColor: "#050508", // Глубокий темный фон
-        fontFamily: "Montserrat, sans-serif",
+        backgroundColor: "#050508",
+        fontFamily: "sans-serif",
         justifyContent: "center",
         alignItems: "center",
         padding: "80px",
       }}
     >
-      {/* Неоновый легкий акцент в фоне */}
       <div
         style={{
-          position: "absolute",
-          width: "600px",
-          height: "600px",
-          borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(120,0,255,0.15) 0%, rgba(0,0,0,0) 70%)",
-          filter: "blur(50px)",
-        }}
-      />
-
-      {/* Текст блока */}
-      <div
-        style={{
-          color: isLastBlock ? "#ff3333" : "#ffffff", // Красный акцент на финальной фразе
+          color: isLastBlock ? "#ff3333" : "#ffffff",
           fontSize: "64px",
           fontWeight: 700,
           textAlign: "center",
           lineHeight: 1.3,
           zIndex: 10,
-          textShadow: isLastBlock ? "0 0 20px rgba(255,0,0,0.6)" : "0 0 10px rgba(255,255,255,0.2)",
         }}
       >
         {currentText}
       </div>
 
-      {/* Прогресс-бар внизу */}
       <div
         style={{
           position: "absolute",
